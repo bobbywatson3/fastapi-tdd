@@ -31,7 +31,7 @@ jobs:
           # cache-to: type=inline
           # pull: true
           push: true
-          tags: ${{ env.IMAGE_NAME }}:latest
+          tags: docker.pkg.github.com/${{ env.IMAGE_NAME }}:latest
       # - name: Build image
       #   run: |
       #     docker build \
