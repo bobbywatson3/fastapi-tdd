@@ -28,9 +28,11 @@ jobs:
           context: ./project
           file: ./project/Dockerfile.prod
           load: true
+          cache-from: type=registry,ref=bobbywatson3/summarizer/summarizer:latest
+          cache-to: type=inline
           pull: true
           push: true
-          tags: docker.pkg.github.com/bobbywatson3/summarizer/summarizer:latest
+          tags: bobbywatson3/summarizer/summarizer:latest
       # - name: Build image
       #   run: |
       #     docker build \
