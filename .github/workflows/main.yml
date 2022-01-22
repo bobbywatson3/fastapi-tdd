@@ -59,7 +59,7 @@ jobs:
             -e DATABASE_URL=sqlite://sqlite.db \
             -e DATABASE_TEST_URL=sqlite://sqlite.db \
             -p 5003:8765 \
-            ${{ env.IMAGE }}:latest
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
       - name: Pytest
         run: docker exec summarizer python -m pytest .
       - name: Flake8
