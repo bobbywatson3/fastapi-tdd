@@ -27,7 +27,6 @@ jobs:
         with:
           context: ./project
           file: ./project/Dockerfile.prod
-          load: true
           cache-from: type=registry,ref=bobbywatson3/summarizer/summarizer:latest
           cache-to: type=inline
           pull: true
