@@ -1,4 +1,4 @@
-# FastAPI
+# Summarizer (FastAPI and Postgres Example App)
 
 ## Running Locally for Development
 
