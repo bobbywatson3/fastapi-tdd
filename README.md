@@ -1,4 +1,6 @@
 # Summarizer (FastAPI and Postgres Example App)
+[![Summarizer CI/CD](https://github.com/bobbywatson3/summarizer/actions/workflows/main.yml/badge.svg)](https://github.com/bobbywatson3/summarizer/actions/workflows/main.yml)
+
 
 ## Running Locally for Development
 
