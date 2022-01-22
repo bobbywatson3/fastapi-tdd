@@ -39,7 +39,7 @@ jobs:
     needs: build
     steps:
       - name: echo
-        run: echo ${{ needs.build.build_and_push.outputs.digest }}
+        run: echo ${{ needs.build.outputs.digest }}
         
       # - name: Build image
       #   run: |
