@@ -31,7 +31,7 @@ jobs:
           cache-to: type=inline
           pull: true
           push: true
-          tags: ${{IMAGE_NAME}}:latest
+          tags: "${{ IMAGE_NAME }}:latest"
       # - name: Build image
       #   run: |
       #     docker build \
