@@ -27,9 +27,9 @@ jobs:
         with:
           context: ./project
           file: ./project/Dockerfile.prod
-          cache-from: type=registry,ref=${{ env.IMAGE_NAME }}:latest
-          cache-to: type=inline
-          pull: true
+          # cache-from: type=registry,ref=${{ env.IMAGE_NAME }}:latest
+          # cache-to: type=inline
+          # pull: true
           push: true
           tags: ${{ env.IMAGE_NAME }}:latest
       # - name: Build image
