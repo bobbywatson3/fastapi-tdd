@@ -27,6 +27,7 @@ jobs:
         with:
           context: ./project
           file: ./project/Dockerfile.prod
+          load: true
           pull: true
           push: true
           tags: docker.pkg.github.com/bobbywatson3/summarizer/summarizer:latest
