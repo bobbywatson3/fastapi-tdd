@@ -27,11 +27,11 @@ jobs:
         with:
           context: ./project
           file: ./project/Dockerfile.prod
-          cache-from: type=registry,ref=${{ IMAGE_NAME }}:latest
+          cache-from: type=registry,ref=${{ env.IMAGE_NAME }}:latest
           cache-to: type=inline
           pull: true
           push: true
-          tags: ${{ IMAGE_NAME }}:latest
+          tags: ${{ env.IMAGE_NAME }}:latest
       # - name: Build image
       #   run: |
       #     docker build \
