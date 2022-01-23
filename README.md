@@ -7,7 +7,7 @@
 - Bring the environment up:
     `docker-compose up -d`
 - Run db migrations:
-    `docker-compose docker-compose exec web aerich upgrade`
+    ` docker-compose exec web aerich upgrade`
 - Bring environment down and remove persistent DB disk:
     `docker-compose down -v`
 
@@ -24,7 +24,10 @@ heroku container:release web --app ${APP_NAME}
 heroku run aerich upgrade --app ${APP_NAME}
 ```
 
-## Running unit tests locally (and quickly!)
+## Testing
+Run the included `run_all_tests.sh` to bring up the application via docker-compose to run all of the tests.
+### Running unit tests locally (and quickly in parallel)
 ```bash
+docker-compose up -d
 docker-compose exec web pytest -k "unit" -n auto
 ```
