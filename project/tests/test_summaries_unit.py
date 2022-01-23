@@ -1,10 +1,10 @@
-from cgi import test
 import json
 from datetime import datetime
 
 import pytest
 
-from app.api import crud, summaries
+from app.api import crud
+
 
 def test_create_test_summary(test_app, monkeypatch):
     test_request_payload = {"url": "https://foo.bar"}
@@ -19,6 +19,7 @@ def test_create_test_summary(test_app, monkeypatch):
 
     assert response.status_code == 201
     assert response.json() == test_response_payload
+
 
 def test_create_summaries_invalid_json(test_app):
     response = test_app.post("/summaries/", data=json.dumps({}))
@@ -37,6 +38,7 @@ def test_create_summaries_invalid_json(test_app):
     assert response.status_code == 422
     assert response.json()["detail"][0]["msg"] == "URL scheme not permitted"
 
+
 def test_read_summary(test_app, monkeypatch):
     test_data = {
         "id": 1,
@@ -53,6 +55,7 @@ def test_read_summary(test_app, monkeypatch):
     assert response.status_code == 200
     assert response.json() == test_data
 
+
 def test_read_summary_incorrect_id(test_app, monkeypatch):
     async def mock_get(id):
         return None
@@ -62,6 +65,7 @@ def test_read_summary_incorrect_id(test_app, monkeypatch):
     response = test_app.get("/summaries/999/")
     assert response.status_code == 404
     assert response.json()["detail"] == "Summary not found"
+
 
 def test_read_all_summaries(test_app, monkeypatch):
     test_data = [
@@ -120,6 +124,7 @@ def test_remove_summary_incorrect_id(test_app, monkeypatch):
     assert response.status_code == 404
     assert response.json()["detail"] == "Summary not found"
 
+
 def test_update_summary(test_app, monkeypatch):
     test_request_payload = {"url": "https://foo.bar", "summary": "updated"}
     test_response_payload = {
@@ -137,6 +142,7 @@ def test_update_summary(test_app, monkeypatch):
     response = test_app.put("/summaries/1/", data=json.dumps(test_request_payload),)
     assert response.status_code == 200
     assert response.json() == test_response_payload
+
 
 @pytest.mark.parametrize(
     "summary_id, payload, status_code, detail",
