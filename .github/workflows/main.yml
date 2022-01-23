@@ -44,7 +44,7 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Pull image to use as cache source
+      - name: Pull image
         run: |
           docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest || true
       - name: Run tests
@@ -87,6 +87,8 @@ jobs:
       - name: Pull image
         run: |
           docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest || true
+      - name: Tag image for Heroku
+        run: docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest ${{ env.HEROKU_REGISTRY_IMAGE }}:latest
       - name: Log in to Heroku Container registry
         run: docker login -u _ -p ${HEROKU_AUTH_TOKEN} registry.heroku.com
         env:
