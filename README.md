@@ -23,3 +23,8 @@ docker push registry.heroku.com/${APP_NAME}/web:latest
 heroku container:release web --app ${APP_NAME}
 heroku run aerich upgrade --app ${APP_NAME}
 ```
+
+## Running unit tests locally (and quickly!)
+```bash
+docker-compose exec web pytest -k "unit" -n auto
+```
